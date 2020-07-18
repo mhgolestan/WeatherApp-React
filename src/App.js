@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactGlobe from 'react-globe';
 import defaultMarkers from './markers';
+import useGetLocation from "./useGetLocation"
 import "./App.css"
 
 const api = {
@@ -98,13 +99,9 @@ function App() {
           <div className="location-box">
             <div className="location">{weather.name}, {weather.sys.country}</div>
             <div className="date">{dateBuilder(new Date())}</div>
-          </div>
-          <div className="weather-box">
+
             <div className="temp">
               {Math.round(weather.main.temp)}°c
-            </div>
-            <div className="temp">
-              {weather.coord.lat}
             </div>
             <div className="weather">{weather.weather[0].main}</div>
           </div>
@@ -147,7 +144,7 @@ function App() {
 
 
         <button
-          disabled={markers.length === 0}
+          className="user-location-btn"
           onClick={() => setMarkers(markers.slice(0, markers.length - 1))}>
           Local Weather
         </button>
