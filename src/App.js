@@ -114,11 +114,10 @@ function App() {
             <div>
               {weather.name}, {weather.sys.country}
             </div>
-            <div>{dateBuilder(new Date())}</div>
+            <div> Date: {dateBuilder(new Date())}</div>
           </div>
           <div>
-            <div>{Math.round(weather.main.temp)}°c</div>
-            <div>{weather.coord.lat}</div>
+            <div>Temperature: {Math.round(weather.main.temp)}°c</div>
             <div>{weather.weather[0].main}</div>
           </div>
         </div>

@@ -2,17 +2,11 @@
   position: fixed; /* or absolute */
   top: 20px;
   left: 20px;
-  /* position: absolute;
-    top: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 20vw;
-    padding-top: 5vh; */
 }
 
 .search-box > input {
   height: 30px;
-  width: 180px;
+  width: 230px;
   border-radius: 4px;
   padding: 0 5px;
 }
@@ -27,7 +21,7 @@
   color: rgb(32, 32, 32);
   padding: 7px 5px;
   border-radius: 4px;
-  width: 180px;
+  width: 230px;
 
   /* padding-top: 50vh; */
 }
