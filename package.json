@@ -10,7 +10,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-globe": "^4.0.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^4.0.2",
     "three": "0.109.0"
   },
   "scripts": {
