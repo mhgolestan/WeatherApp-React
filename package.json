@@ -11,7 +11,7 @@
     "react-dom": "^16.13.1",
     "react-globe": "^4.0.0",
     "react-scripts": "^4.0.2",
-    "three": "0.109.0"
+    "three": "0.125.0"
   },
   "scripts": {
     "start": "react-scripts start",
