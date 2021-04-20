@@ -3,7 +3,7 @@ import ReactGlobe from "react-globe";
 import "./App.css";
 
 const api = {
-  key: "f23aee746d1da84801efc50791300a95",
+  key: process.env.REACT_APP_Weather_API_KEY,
   base: "https://api.openweathermap.org/data/2.5/",
 };
 
@@ -19,24 +19,20 @@ function App() {
     if (evt.key === "Enter") {
       fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
         .then((res) => res.json())
-        .then((result) => {
-          if (result.cod !== 200) {
-            alert("city does not exist.");
-            return;
-          }
-
-          setWeather(result);
+        .then((res) => {
+          setWeather(res);
           setQuery("");
           setMarkers([
             {
               id: 1,
               city: query,
               color: `hsl(100, 100%, 50%)`,
-              coordinates: [result.coord.lat, result.coord.lon],
-              value: [Math.floor(result.main.temp)],
+              coordinates: [res.coord.lat, res.coord.lon],
+              value: [Math.floor(res.main.temp)],
             },
           ]);
-        });
+        })
+        .catch((err) => alert("City not found"));
     }
   };
 
@@ -112,13 +108,18 @@ function App() {
         <div className="result-box">
           <div>
             <div>
-              {weather.name}, {weather.sys.country}
+              <strong>City: </strong>
+              {weather.name}
             </div>
-            <div> Date: {dateBuilder(new Date())}</div>
+            <div>
+              {" "}
+              <strong>Date: </strong> {dateBuilder(new Date())}
+            </div>
           </div>
           <div>
-            <div>Temperature: {Math.round(weather.main.temp)}°c</div>
-            <div>{weather.weather[0].main}</div>
+            <div>
+              <strong>Temperature: </strong> {Math.round(weather.main.temp)}°c
+            </div>
           </div>
         </div>
       ) : (
@@ -136,7 +137,6 @@ function App() {
             getTooltipContent: (marker) =>
               `City: ${marker.city} (Temperature: ${marker.value} °c)`,
           }}
-          onClickMarker={onClickMarker}
           onDefocus={onDefocus}
         />
 
